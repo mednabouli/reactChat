@@ -23,14 +23,13 @@ class App extends Component {
     });
 
     const chatContainer = document.getElementsByClassName('conversation');
-    
-    function scroll(){
+
+    function scroll() {
       console.log('this works');
       chatContainer.scrollTop = chatContainer.scrollHeight;
     }
 
     scroll();
-
   };
 
   render() {
@@ -52,6 +51,7 @@ class App extends Component {
         <div className="input-container">
           <form onSubmit={this.onSubmit}>
             <input
+              placeholder="enter your message"
               type="text"
               value={this.state.message}
               onChange={this.onChange}
