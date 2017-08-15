@@ -1,3 +1,5 @@
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:300, 400, 600, 700';
+
 .App {
   text-align: center;
 }
@@ -19,6 +21,83 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.app {
+  background: url(http://static1.squarespace.com/static/55acc005e4b098e615cd80e2/5777d3433e00be9cc0d8e3f6/5794e11ee4fcb508439092c7/1469374779773/IMG_3487.jpg?format=2500w);
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  display: flex;
+  font-family: 'Open Sans', sans-serif;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  overflow: scroll !important;
+}
+
+.App {
+  height: 520px;
+  width: 320px;
+  background-color: rgba(233, 241, 247, 0.95);
+  display: block;
+  vertical-align: baseline;
+}
+
+.message {
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 12px;
+  display: inline-block;
+  font-weight: 600;
+  max-width: 80%;
+  line-height: 1.4;
+  border-radius: 3px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  background-color: white;
+  width: 100%;
+}
+
+.conversation {
+  overflow: auto;
+  height: 300px;
+}
+
+.input-container {
+  height: 60px;
+  background: rgba(193, 207, 218, 0.8);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+input {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  border-radius: 44px;
+  height: 40px;
+  box-sizing: border-box;
+  border: 0;
+  padding: 0 20px;
+  color: #131b23;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  outline: none;
 }

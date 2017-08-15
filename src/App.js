@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import {connect} from 'react-redux';
-// import {socket} from './utls/socket';
-import {sendMessage} from './actions/message';
+import { connect } from 'react-redux';
+import { sendMessage } from './actions/message';
 import './App.css';
 
 class App extends Component {
@@ -16,11 +15,11 @@ class App extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    console.log('this works')
+    console.log('this works');
     this.props.dispatch(sendMessage(this.state.message));
     this.setState({
       message: ''
-    })
+    });
   };
 
   render() {
@@ -30,25 +29,35 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-        <form onSubmit={this.onSubmit}>
-          <input
-            type="text"
-            value={this.state.message}
-            onChange={this.onChange}
-          />
-        </form>
-        {this.props.messages.map((msg, i) => (
-          <li key={i}> {msg}</li>
-        ))}
+
+        <div className="conversation">
+          {this.props.messages.map((msg, i) =>
+            <p className="message" key={i}>
+              {' '}{msg}
+            </p>
+          )}
+        </div>
+        <div className="input-container">
+          <form onSubmit={this.onSubmit}>
+            <input
+              type="text"
+              value={this.state.message}
+              onChange={this.onChange}
+            />
+            <button>
+              send
+            </button>
+          </form>
+        </div>
       </div>
     );
   }
 }
 
-function mapStateToProps(state){
-  return{
+function mapStateToProps(state) {
+  return {
     messages: state.message.data
-  }
+  };
 }
 
 export default connect(mapStateToProps, null)(App);
