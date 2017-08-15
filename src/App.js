@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import { connect } from 'react-redux';
 import { sendMessage } from './actions/message';
 import './App.css';
+import '../node_modules/font-awesome/css/font-awesome.min.css';
 
 class App extends Component {
   state = {
@@ -20,9 +21,20 @@ class App extends Component {
     this.setState({
       message: ''
     });
+
+    const chatContainer = document.getElementsByClassName('conversation');
+    
+    function scroll(){
+      console.log('this works');
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+
+    scroll();
+
   };
 
   render() {
+    var FontAwesome = require('react-fontawesome');
     return (
       <div className="App">
         <div className="App-header">
@@ -45,7 +57,7 @@ class App extends Component {
               onChange={this.onChange}
             />
             <button>
-              send
+              <i className="fa fa-send" />
             </button>
           </form>
         </div>

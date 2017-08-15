@@ -2,6 +2,8 @@
 
 .App {
   text-align: center;
+  margin: auto;
+  margin-top: 30px;
 }
 
 .App-logo {
@@ -66,6 +68,7 @@
   word-break: break-word;
   background-color: white;
   width: 100%;
+  text-align: left;
 }
 
 .conversation {
@@ -100,4 +103,21 @@ input {
   font-size: 14px;
   font-weight: 400;
   outline: none;
+  float: left;
+  text-align: left !important;
+}
+
+button {
+  		background: #4d6b82;
+			height: 44px;
+			color: white;
+			font-size: 18px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 44px;
+			border: 0;
+			border-radius: 50px;
+			margin-left: 30px;
+      float: right;
 }
