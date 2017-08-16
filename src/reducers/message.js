@@ -1,5 +1,6 @@
 const initialState = {
-  data: []
+  data: [],
+  channels: []
 };
 
 export default (state = initialState, action) => {
