@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { sendMessage } from './actions/message';
 import './App.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
+import Conversation from '../src/components/Conversation';
 
 class App extends Component {
   state = {
@@ -36,18 +37,12 @@ class App extends Component {
     var FontAwesome = require('react-fontawesome');
     return (
       <div className="App">
+      <div>something</div>
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-
-        <div className="conversation">
-          {this.props.messages.map((msg, i) =>
-            <p className="message" key={i}>
-              {' '}{msg}
-            </p>
-          )}
-        </div>
+        <Conversation messages={this.props.messages} />
         <div className="input-container">
           <form onSubmit={this.onSubmit}>
             <input
