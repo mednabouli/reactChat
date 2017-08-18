@@ -105,6 +105,7 @@ input {
   outline: none;
   float: left;
   text-align: left !important;
+  width: 70%;
 }
 
 button {
@@ -120,4 +121,58 @@ button {
 			border-radius: 50px;
 			margin-left: 30px;
       float: right;
+}
+
+.sidebar{
+  background: #505d71;
+  height: 360px;
+}
+
+.chat{
+  background-color: rgba(233, 241, 247, 0.95);
+}
+
+.main{
+  margin: auto;
+  text-align: center;
+  margin: auto;
+}
+
+
+[class*='col-'] {
+  float: left;
+}
+
+.col-3-4 {
+  width: 75%;
+}
+.col-1-4 {
+  width: 25%;
+}
+
+ul{
+  list-style: none;
+}
+
+li{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline
+}
+
+.channel-name{
+  padding: 15px;
+  color: #bcc3d0;
+  text-decoration: none;
+  display: block;
+  position: relative;
+  border-bottom: 2px solid #586476;
+}
+
+.item:hover {
+  background: #445166;
+	color: #fff;
 }
