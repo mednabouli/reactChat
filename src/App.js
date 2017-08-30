@@ -56,6 +56,7 @@ class App extends Component {
             </button>
           </form>
         </div>
+        <h1>I'm something different</h1>
       </div>
     );
   }
