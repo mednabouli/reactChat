@@ -12,6 +12,10 @@ class Container extends Component {
     message: ''
   };
 
+  // componentDidMount(){
+  //   this.props.loadMessages()
+  // }
+
   onChange = e => {
     this.setState({ message: e.target.value });
   };
@@ -31,6 +35,9 @@ class Container extends Component {
   }
 
   render() {
+    console.log("===================================================")
+    console.log(this.props.messages)
+    console.log("===================================================")
     return (
       <div className="main">
         <div className="App-header">

@@ -16,7 +16,7 @@ export default (state = initialState, action) => {
       case LOAD_MESSAGES:
       return{
         ...state,
-        data: [...state.data, action.messageArray]
+        data: [...state.data, ...action.payload]
       }
     default:
       return state;
