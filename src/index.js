@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import App from './App';
 import Test from '../src/components/Test';
 import Container from './components/Container';
+import Landing from './components/Landing';
 import registerServiceWorker from './registerServiceWorker';
 import store from './store';
 import './App.css';
@@ -16,7 +17,8 @@ ReactDOM.render(
     <BrowserRouter>
       <Switch>
         <Route path="/something" component={Test} />
-        <Route path="/" component={Container} />
+        <Route path="/chat" component={Container} />
+        <Route path="/" component={Landing}/>
       </Switch>
     </BrowserRouter>
   </Provider>,

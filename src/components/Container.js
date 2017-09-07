@@ -12,9 +12,9 @@ class Container extends Component {
     message: ''
   };
 
-  // componentDidMount(){
-  //   this.props.loadMessages()
-  // }
+  componentDidMount(){
+    this.props.loadMessages()
+  }
 
   onChange = e => {
     this.setState({ message: e.target.value });
