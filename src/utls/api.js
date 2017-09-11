@@ -36,5 +36,19 @@ class MessageApi {
 
 }
 
+class UserApi {
+
+
+  registerUser(userInput) {
+    return axios.post(`register`, userInput);
+    console.log(this.path)
+  }
+
+  loginUser(userInput) {
+    return axios.post(`login`, userInput);
+  }
+}
+
 
 export const Message = new MessageApi();
+export const User = new UserApi();
