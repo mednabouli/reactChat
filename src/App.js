@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import { connect } from 'react-redux';
 import { sendMessage } from './actions/message';
-import './App.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
 import Conversation from '../src/components/Conversation';
 

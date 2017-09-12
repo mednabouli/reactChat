@@ -64,16 +64,13 @@ class Container extends Component {
                 value={this.state.message}
                 onChange={this.onChange}
               />
-              <button>
+              <button className="chat">
                 <i className="fa fa-send" />
               </button>
             </form>
           </div>
         </div>
         <div>
-        <button onClick={this.loadMessages}>  
-        click me
-        </button>
         </div>
       </div>
     );

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../actions/user';
-
 import { Navbar, Nav, NavItem, MenuItem, NavDropdown, Button } from 'react-bootstrap';
+import '../App.css';
 
 class navbarInstance extends Component {
   clearCache = () => {
@@ -28,10 +28,9 @@ class navbarInstance extends Component {
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav pullRight>
-            <Button  onClick={this.clearCache}>Logout</Button>
+            <Button onClick={this.clearCache}>Logout</Button>
             <Button onClick={()=> this._goTo('/login')}>Login</Button>
             <Button onClick={()=> this._goTo('/register')}>Register</Button>
-
             </Nav>
           </Navbar.Collapse>
         </Navbar>

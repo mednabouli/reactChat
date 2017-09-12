@@ -108,7 +108,7 @@ input {
   width: 70%;
 }
 
-button {
+button.chat{
   		background: #4d6b82;
 			height: 44px;
 			color: white;
@@ -179,4 +179,14 @@ li{
 
 .register{
   text-align:center !important;
+}
+
+Button {
+  color: red;
+  padding-left: 4px;
+}
+
+.navbar {
+  border-radius: 0px !important;
+  margin-bottom: 0px !important;
 }
