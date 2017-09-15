@@ -16,7 +16,7 @@ export default (state = initialState, action) => {
       case LOAD_MESSAGES:
       return{
         ...state,
-        data: [...state.data, ...action.payload]
+        data: [...state.data, ...action.payload].sort(function(a,b){return new Date(a.createdAt) - new Date(b.createdAt)})
       }
     default:
       return state;

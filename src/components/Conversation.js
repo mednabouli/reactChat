@@ -15,6 +15,7 @@ class Conversation extends Component {
       }
     });
 
+
     return (
       <div className="conversation">
         {renderArray.map((msg, i) => (

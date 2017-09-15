@@ -22,7 +22,8 @@ const initialState = {
   isLogged: info != null,
   loading: false,
   token: info,
-  error: null
+  error: null,
+  info: null
 };
 
 export default (state = initialState, action) => {

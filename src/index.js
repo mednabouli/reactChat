@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import App from './App';
-import Test from '../src/components/Test';
 import Container from './components/Container';
 import Landing from './components/Landing';
 import Register from './components/Register';
@@ -13,6 +11,8 @@ import Nav from './components/Nav';
 import PrivateRoute from './components/PrivateRoute';
 import registerServiceWorker from './registerServiceWorker';
 import store from './store';
+
+
 
 // <App className="app"/>
 

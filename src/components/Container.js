@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
 import logo from '../logo.svg';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import '../App.css';
 import '../../node_modules/font-awesome/css/font-awesome.min.css';
 import Conversation from './Conversation';
 import {loadMessages, sendMessage} from '../actions/message';
+import {persistStore, autoRehydrate} from 'redux-persist';
+import store from '../store';
+
 
 class Container extends Component {
   state = {
-    message: ''
+    message: '',
+    user: ''
   };
 
   componentDidMount(){
+    persistStore(store, {whitelist: ['user']});
     this.props.loadMessages()
   }
 
@@ -37,6 +41,9 @@ class Container extends Component {
   render() {
     console.log("===================================================")
     console.log(this.props.messages)
+    console.log("===================================================")
+    console.log("===================================================")
+    console.log(this.props.user.info)
     console.log("===================================================")
     return (
       <div className="main">
@@ -79,7 +86,8 @@ class Container extends Component {
 
 function mapStateToProps(state) {
   return {
-    messages: state.message.data
+    messages: state.message.data,
+    user: state.user
   };
 }
 
