@@ -5,7 +5,7 @@ class Landing extends Component {
   render(){
     return(
       <div>
-      something here
+      something here for kyle
       </div>
     )
   }
