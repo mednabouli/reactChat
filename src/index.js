@@ -12,15 +12,13 @@ import PrivateRoute from './components/PrivateRoute';
 import registerServiceWorker from './registerServiceWorker';
 import store from './store';
 
-
-
 // <App className="app"/>
 
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <div>
-      <Nav/>
+        <Nav />
         <Switch>
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
