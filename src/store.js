@@ -1,7 +1,6 @@
 import { applyMiddleware, compose, createStore } from 'redux';
 import { createLogger } from 'redux-logger';
 import {persistStore, autoRehydrate} from 'redux-persist';
-import { createFilter, createBlacklistFilter } from 'redux-persist-transform-filter';
 import thunk from 'redux-thunk';
 
 import rootReducer from './reducers';
