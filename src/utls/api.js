@@ -44,7 +44,7 @@ class UserApi {
     console.log(this.path)
   }
 
-  loginUser(userInput) {
+loginUser(userInput) {
     return axios.post(`login`, userInput);
   }
 }

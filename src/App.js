@@ -4,11 +4,18 @@ import { connect } from 'react-redux';
 import { sendMessage } from './actions/message';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
 import Conversation from '../src/components/Conversation';
+import {persistStore, autoRehydrate} from 'redux-persist';
+import store from './store';
 
 class App extends Component {
   state = {
     message: ''
   };
+
+  componentDidMount(){
+    persistStore(store, {whitelist: ['user']}, () => this.setState({ appReady: true }));
+    this.props.loadMessages()
+  }
 
   onChange = e => {
     this.setState({ message: e.target.value });
@@ -33,9 +40,11 @@ class App extends Component {
   };
 
   render() {
+    if (!this.state.appReady) { return <h1>loading</h1>}
     var FontAwesome = require('react-fontawesome');
     return (
       <div className="App">
+      
       <div>something</div>
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />

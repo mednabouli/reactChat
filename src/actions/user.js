@@ -37,8 +37,8 @@ export function login(userInput) {
 
     try {
       const { data } = await User.loginUser(userInput);
-      localStorage.setItem('token', data.token)
-      localStorage.setItem('user', JSON.stringify(data.user))
+      // localStorage.setItem('token', data.token)
+      // localStorage.setItem('user', JSON.stringify(data.user))
       
       console.log(data);
       return dispatch(loginSuccess(data));
@@ -47,6 +47,7 @@ export function login(userInput) {
     }
   }
 }
+
 
 export function loginSuccess(data) {
   return {
