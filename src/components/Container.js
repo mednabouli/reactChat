@@ -5,9 +5,6 @@ import '../App.css';
 import '../../node_modules/font-awesome/css/font-awesome.min.css';
 import Conversation from './Conversation';
 import {loadMessages, sendMessage} from '../actions/message';
-import {persistStore, autoRehydrate} from 'redux-persist';
-import store from '../store';
-
 
 class Container extends Component {
   state = {
@@ -16,7 +13,6 @@ class Container extends Component {
   };
 
   componentDidMount(){
-    persistStore(store, {whitelist: ['user']});
     this.props.loadMessages()
   }
 
