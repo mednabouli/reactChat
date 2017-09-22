@@ -1,6 +1,6 @@
 import { applyMiddleware, compose, createStore } from 'redux';
 import { createLogger } from 'redux-logger';
-import {persistStore, autoRehydrate} from 'redux-persist';
+import { autoRehydrate } from 'redux-persist';
 import thunk from 'redux-thunk';
 
 import rootReducer from './reducers';
@@ -10,17 +10,7 @@ const middlewares = [
   thunk
 ];
 
-// export default createStore(
-//   rootReducer,
-//   undefined,
-//   compose(
-//     applyMiddleware(...middlewares),
-//     autoRehydrate(),
-//     window.devToolsExtension ? window.devToolsExtension() : f => f 
-//   )
-// )
-
-const store = createStore(
+export default createStore(
   rootReducer,
   undefined,
   compose(
@@ -29,7 +19,3 @@ const store = createStore(
     window.devToolsExtension ? window.devToolsExtension() : f => f 
   )
 )
-
-// persistStore(store)
-
-export default store;

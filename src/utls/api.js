@@ -37,14 +37,11 @@ class MessageApi {
 }
 
 class UserApi {
-
-
   registerUser(userInput) {
     return axios.post(`register`, userInput);
-    console.log(this.path)
   }
 
-loginUser(userInput) {
+  loginUser(userInput) {
     return axios.post(`login`, userInput);
   }
 }

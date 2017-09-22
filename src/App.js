@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
+import FontAwesome from 'react-fontawesome';
+import { persistStore } from 'redux-persist';
+
 import logo from './logo.svg';
 import { connect } from 'react-redux';
 import { sendMessage } from './actions/message';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
 import Conversation from '../src/components/Conversation';
-import {persistStore, autoRehydrate} from 'redux-persist';
 import store from './store';
 
 class App extends Component {
   state = {
-    message: ''
+    message: '',
+    appReady: false,
   };
 
   componentDidMount(){
@@ -41,7 +44,7 @@ class App extends Component {
 
   render() {
     if (!this.state.appReady) { return <h1>loading</h1>}
-    var FontAwesome = require('react-fontawesome');
+
     return (
       <div className="App">
       
