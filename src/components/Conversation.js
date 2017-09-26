@@ -15,6 +15,8 @@ class Conversation extends Component {
       }
     });
 
+    console.log(renderArray)
+
 
     return (
       <div className="conversation">
