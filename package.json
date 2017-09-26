@@ -25,6 +25,5 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  // "proxy": "https://frozen-cliffs-83109.herokuapp.com"
-  "proxy": "https://fierce-woodland-36564.herokuapp.com"
+  "proxy": "https://fierce-woodland-36564.herokuapp.com/"
 }
