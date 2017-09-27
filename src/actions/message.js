@@ -15,7 +15,8 @@ export function sendMessage(message){
     socket.emit('chat message', message);
   }
 }
-socket.on('chat message', message => {
+
+socket.on('chat message', ({message}) => {
   store.dispatch(newMessage(message))
 })
 

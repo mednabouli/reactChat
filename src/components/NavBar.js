@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../actions/user';
+import { Button } from 'react-bootstrap';
 import '../App.css';
 
 class Navbar extends Component {
@@ -21,7 +22,7 @@ class Navbar extends Component {
     };
     return (
       <div className="navBar">
-      <button onClick={this.clearCache}>Logout</button>
+      <Button onClick={this.clearCache}>Logout</Button>
       </div>
     );
   }

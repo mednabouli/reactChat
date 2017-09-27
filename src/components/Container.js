@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import logo from '../logo.svg';
 import { connect } from 'react-redux';
+import {scroller} from 'react-scroll'; //Imports scroller mixin, can use as scroller.scrollTo()
 import '../App.css';
 import '../../node_modules/font-awesome/css/font-awesome.min.css';
 import Conversation from './Conversation';
 import {loadMessages, sendMessage} from '../actions/message';
 
 class Container extends Component {
+
   state = {
     message: '',
-    user: ''
+    user: this.props.user.info.username
   };
 
   componentDidMount(){
@@ -23,10 +25,17 @@ class Container extends Component {
   onSubmit = e => {
     e.preventDefault();
     console.log('this works');
-    this.props.sendMessage(this.state.message);
+    this.props.sendMessage(this.state);
     this.setState({
-      message: ''
+      message: '',
     });
+    scroller.scrollTo('myScrollToElement', {
+      smooth: true
+    })
+
+    console.log('==================')
+    console.log(this.props.user.info.username)
+    console.log('==================')
   };
 
   
@@ -35,17 +44,11 @@ class Container extends Component {
   }
 
   render() {
-    console.log("===================================================")
-    console.log(this.props.messages)
-    console.log("===================================================")
-    console.log("===================================================")
-    console.log(this.props.user.info)
-    console.log("===================================================")
     return (
       <div className="main">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <h2>Welcome to React {this.props.user.info.username}</h2>
         </div>
         <div className="sidebar col-1-4">
           <ul className="channel-list">
@@ -71,6 +74,7 @@ class Container extends Component {
                 <i className="fa fa-send" />
               </button>
             </form>
+            <p name="myScrollToElement"></p>            
           </div>
         </div>
         <div>

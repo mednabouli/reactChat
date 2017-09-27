@@ -5,24 +5,11 @@ class Conversation extends Component {
   render() {
     const { messages } = this.props;
 
-    const renderArray = [];
-
-    messages.forEach(msg => {
-      if (msg.text) {
-        renderArray.push(msg.text);
-      } else {
-        renderArray.push(msg);
-      }
-    });
-
-    console.log(renderArray)
-
-
     return (
       <div className="conversation">
-        {renderArray.map((msg, i) => (
+        {messages.map((msg, i) => (
           <p className="message" key={i}>
-            {msg}
+            {msg.text}
           </p>
         ))}
       </div>

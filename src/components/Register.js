@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { register } from '../actions/user';
+import { Button } from 'react-bootstrap';
+
 
 import '../App.css';
 class Register extends Component {
@@ -55,7 +57,7 @@ class Register extends Component {
             placeholder="please enter your password"
             value={this.state.password}
           />
-          <button type="submit">enter</button>
+          <Button type="submit">enter</Button>
         </form>
       </div>
     );
