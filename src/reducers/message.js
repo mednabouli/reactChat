@@ -10,7 +10,7 @@ export default (state = initialState, action) => {
     case 'NEW_MESSAGE': 
       return {
         ...state, 
-        data: [...state.data, {text: action.message}]
+        data: [...state.data, {text: action.payload.message, user: action.payload.user}]
       }
 
       case LOAD_MESSAGES:

@@ -8,9 +8,12 @@ class Conversation extends Component {
     return (
       <div className="conversation">
         {messages.map((msg, i) => (
-          <p className="message" key={i}>
-            {msg.text}
-          </p>
+          <div>
+          <p className="user">{msg.user}</p>
+            <p className="message" key={i}>
+              {msg.text}
+            </p>
+          </div>
         ))}
       </div>
     );

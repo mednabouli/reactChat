@@ -2,10 +2,10 @@ import { socket } from '../utls/socket';
 import { Message } from '../utls/api';
 import store from '../store';
 
-export function newMessage(message){
+export function newMessage(payload){
   return {
     type: 'NEW_MESSAGE',
-    message
+    payload
   }
 }
 
@@ -16,7 +16,9 @@ export function sendMessage(message){
   }
 }
 
-socket.on('chat message', ({message}) => {
+socket.on('chat message', (message) => {
+  console.log('=============message')
+  console.log(message)
   store.dispatch(newMessage(message))
 })
 
