@@ -8,33 +8,17 @@ axios.defaults.baseURL = baseURL;
 
 class MessageApi {
 
-  // insertGoal(data) {
-  //   return axios.post(
-  //     this.path,
-  //     {
-  //       title: data.goal_name
-  //     },
-  //     {
-  //       headers: {
-  //         authorization: localStorage.getItem('token')
-  //       }
-  //     }
-  //   );
-  // }
+  createChannel(name){
+    return axios.post(`channel`, name)
+  }
+
+  loadChannels() {
+    return axios.get(`channel`)
+  }
 
   loadMessages() {
     return axios.get(`messages`);
   }
-
-  // fetchGoal(id) {
-  //   return axios.get(`/goals/${id}`, {
-  //     headers: {
-  //       authorization: localStorage.getItem('token')
-  //     }
-  //   });
-  // }
-
-
 
 }
 
@@ -47,6 +31,8 @@ class UserApi {
     return axios.post(`login`, userInput);
   }
 }
+
+
 
 
 export const Message = new MessageApi();

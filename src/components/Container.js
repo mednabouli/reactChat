@@ -1,21 +1,27 @@
 import React, { Component } from 'react';
 import logo from '../logo.svg';
 import { connect } from 'react-redux';
-import {scroller} from 'react-scroll'; //Imports scroller mixin, can use as scroller.scrollTo()
+import { scroller } from 'react-scroll'; //Imports scroller mixin, can use as scroller.scrollTo()
 import '../App.css';
 import '../../node_modules/font-awesome/css/font-awesome.min.css';
 import Conversation from './Conversation';
-import {loadMessages, sendMessage} from '../actions/message';
+import Channel from './Channel';
+import { loadMessages, sendMessage } from '../actions/message';
 
 class Container extends Component {
-
   state = {
     message: '',
     user: this.props.user.info.username
   };
 
-  componentDidMount(){
-    this.props.loadMessages()
+  componentDidMount() {
+    this.props.loadMessages();
+    console.log('==================================================');
+    console.log(this.props.match.path);
+    console.log('==================================================');
+    console.log('==================================================');
+    console.log(this.props);
+    console.log('==================================================');
   }
 
   onChange = e => {
@@ -27,21 +33,16 @@ class Container extends Component {
     console.log('this works');
     this.props.sendMessage(this.state);
     this.setState({
-      message: '',
+      message: ''
     });
     scroller.scrollTo('myScrollToElement', {
       smooth: true
-    })
-
-    console.log('==================')
-    console.log(this.props.user.info.username)
-    console.log('==================')
+    });
   };
 
-  
-  loadMessages = e =>{
-    this.props.loadMessages()
-  }
+  loadMessages = e => {
+    this.props.loadMessages();
+  };
 
   render() {
     return (
@@ -74,11 +75,11 @@ class Container extends Component {
                 <i className="fa fa-send" />
               </button>
             </form>
-            <p name="myScrollToElement"></p>            
+            <p name="myScrollToElement" />
           </div>
         </div>
-        <div>
-        </div>
+        <div />
+        <Channel/>>
       </div>
     );
   }
@@ -91,4 +92,6 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {loadMessages, sendMessage})(Container);
+export default connect(mapStateToProps, { loadMessages, sendMessage })(
+  Container
+);

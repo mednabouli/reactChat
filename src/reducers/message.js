@@ -1,4 +1,6 @@
 import {LOAD_MESSAGES} from '../actions/message';
+import {ADD_CHANNEL, LOAD_CHANNELS} from '../actions/channel';
+
 
 const initialState = {
   data: [],
@@ -17,6 +19,18 @@ export default (state = initialState, action) => {
       return{
         ...state,
         data: [...state.data, ...action.payload].sort(function(a,b){return new Date(a.createdAt) - new Date(b.createdAt)})
+      }
+
+      case ADD_CHANNEL:
+      return{
+        ...state,
+        channels: [{channelname: action.name, id: action._id}]
+      }
+
+      case LOAD_CHANNELS:
+      return{
+        ...state,
+        channels:[...state.channels, ...action.payload]
       }
     default:
       return state;
