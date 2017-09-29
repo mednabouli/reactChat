@@ -11,17 +11,18 @@ import { loadMessages, sendMessage } from '../actions/message';
 class Container extends Component {
   state = {
     message: '',
-    user: this.props.user.info.username
+    user: this.props.user.info.username,
+    channel: this.props.match.path
   };
 
   componentDidMount() {
     this.props.loadMessages();
-    console.log('==================================================');
-    console.log(this.props.match.path);
-    console.log('==================================================');
-    console.log('==================================================');
-    console.log(this.props);
-    console.log('==================================================');
+    // console.log('==================================================');
+    // console.log(this.props.match.path);
+    // console.log('==================================================');
+    // console.log('==================================================');
+    // console.log(this.props);
+    // console.log('==================================================');
   }
 
   onChange = e => {
@@ -52,14 +53,7 @@ class Container extends Component {
           <h2>Welcome to React {this.props.user.info.username}</h2>
         </div>
         <div className="sidebar col-1-4">
-          <ul className="channel-list">
-            <li className="item">
-              <a className="channel-name">testing</a>
-            </li>
-            <li className="item">
-              <a className="channel-name">testing</a>
-            </li>
-          </ul>
+        <Channel/>
         </div>
         <div className="chat col-3-4">
           <Conversation messages={this.props.messages} />
@@ -79,7 +73,6 @@ class Container extends Component {
           </div>
         </div>
         <div />
-        <Channel/>>
       </div>
     );
   }

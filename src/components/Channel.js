@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {createRoom, loadChannels} from '../actions/channel';
+import { createRoom, loadChannels } from '../actions/channel';
+import { Link, withRouter } from 'react-router-dom';
+import '../App.css';
 
 class Channel extends Component {
   state = {
     name: ''
   };
 
-  componentDidMount(){
-    this.props.loadChannels()
+  _goTo = route => this.props.history.push(route);
+
+  componentDidMount() {
+    this.props.loadChannels();
   }
 
   onChange = e => {
@@ -19,21 +23,34 @@ class Channel extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    this.props.createRoom(this.state.name)
+    this.props.createRoom(this.state.name);
     this.setState({ name: '' });
   };
 
   render() {
+    const {channels} = this.props.messages
     return (
+      
       <div>
-        <form onSubmit={this.onSubmit}>
-          <input
-            onChange={this.onChange}
-            placeholder="enter channel name"
-            value={this.state.name}
-          />
-          <button type="submit">submit</button>
-        </form>
+        <div className="sidebar">
+          {channels.map((channel) => (
+            <ul className="channel-list">
+              <li className="item" key={channel._id}>
+              <a className="channel-name">{channel.name}</a>
+              </li>
+            </ul>
+          ))}
+        </div>
+        <div>
+          <form onSubmit={this.onSubmit}>
+            <input
+              onChange={this.onChange}
+              placeholder="enter channel name"
+              value={this.state.name}
+            />
+            <button type="submit">submit</button>
+          </form>
+        </div>
       </div>
     );
   }
@@ -45,7 +62,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { createRoom, loadChannels })(
-  Channel
-);
-
+export default withRouter(connect(mapStateToProps, { createRoom, loadChannels })(Channel));

@@ -24,7 +24,7 @@ export default (state = initialState, action) => {
       case ADD_CHANNEL:
       return{
         ...state,
-        channels: [{channelname: action.name, id: action._id}]
+        channels: [...state.channels, {name: action.name, id: action._id}]
       }
 
       case LOAD_CHANNELS:
