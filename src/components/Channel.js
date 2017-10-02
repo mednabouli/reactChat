@@ -32,7 +32,7 @@ class Channel extends Component {
     return (
       
       <div>
-        <div className="sidebar">
+        <div className="item-sidebar">
           {channels.map((channel) => (
             <ul className="channel-list">
               <li className="item" key={channel._id}>
