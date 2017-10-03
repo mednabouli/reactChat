@@ -1,37 +1,54 @@
-import {LOAD_MESSAGES} from '../actions/message';
-import {ADD_CHANNEL, LOAD_CHANNELS} from '../actions/channel';
-
+import { LOAD_MESSAGES } from '../actions/message';
+import { ADD_CHANNEL, LOAD_CHANNELS } from '../actions/channel';
 
 const initialState = {
-  data: [],
-  channels: []
+  channels: {},
+  loading: true,
 };
+
+function loadMessages(state, action) {
+  return {
+    ...state,
+    channels: {
+      [action.channelID]: [
+        // ...state.channels[action.channelID],
+        ...action.payload,
+      ],
+    },
+    loading: false,
+  };
+}
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case 'NEW_MESSAGE': 
+    case 'NEW_MESSAGE':
       return {
-        ...state, 
-        data: [...state.data, {text: action.payload.message, user: action.payload.user}]
-      }
-
-      case LOAD_MESSAGES:
-      return{
         ...state,
-        data: [...state.data, ...action.payload].sort(function(a,b){return new Date(a.createdAt) - new Date(b.createdAt)})
-      }
+        data: [
+          ...state.data,
+          { text: action.payload.message, user: action.payload.user },
+        ],
+      };
 
-      case ADD_CHANNEL:
-      return{
+    case 'LOAD_MESSAGES':
+      return {
         ...state,
-        channels: [...state.channels, {name: action.name, id: action._id}]
+        loading: true,
       }
+    case 'LOAD_MESSAGES_SUCCESS':
+      return loadMessages(state, action);
 
-      case LOAD_CHANNELS:
-      return{
+    case ADD_CHANNEL:
+      return {
         ...state,
-        channels:[...state.channels, ...action.payload]
-      }
+        channels: [...state.channels, { name: action.name, id: action._id }],
+      };
+
+    case LOAD_CHANNELS:
+      return {
+        ...state,
+        channels: [...state.channels, ...action.payload],
+      };
     default:
       return state;
   }

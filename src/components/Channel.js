@@ -12,7 +12,7 @@ class Channel extends Component {
   _goTo = route => this.props.history.push(route);
 
   componentDidMount() {
-    this.props.loadChannels();
+    // this.props.loadChannels();
   }
 
   onChange = e => {
@@ -30,12 +30,12 @@ class Channel extends Component {
   render() {
     const {channels} = this.props.messages
     return (
-      
+
       <div>
         <div className="testdiv">
-          {channels.map((channel, i) => (
-            <ul className="channel-list">
-              <li className="item" key={channel._id} onClick={()=> this._goTo(`/channel/${channel._id}`)}>
+          {Object.values(channels).map((channel, i) => (
+            <ul className="channel-list" key={channel._id}>
+              <li className="item" onClick={()=> this._goTo(`/channel/${channel._id}`)}>
               <a className="channel-name">{channel.name}</a>
               </li>
             </ul>

@@ -7,15 +7,19 @@ import '../../node_modules/font-awesome/css/font-awesome.min.css';
 import Conversation from './Conversation';
 import Channel from './Channel';
 import { loadMessages, sendMessage } from '../actions/message';
+import { joinChannel } from '../actions/channel';
 
 class Container extends Component {
   state = {
     message: '',
     user: this.props.user.info.username,
+    loading: true,
   };
 
   componentDidMount() {
-    this.props.loadMessages(this.props.match.params.id);
+    const { id } = this.props.match.params;
+    this.props.loadMessages(id);
+    this.props.joinChannel(id);
   }
 
   onChange = e => {
@@ -25,20 +29,26 @@ class Container extends Component {
   onSubmit = e => {
     e.preventDefault();
     console.log('this works');
-    this.props.sendMessage(this.state, this.props.match.params.id);
+    this.props.sendMessage(
+      { message: this.state.message, user: this.state.user },
+      this.props.match.params.id,
+    );
     this.setState({
-      message: ''
+      message: '',
     });
     scroller.scrollTo('myScrollToElement', {
-      smooth: true
+      smooth: true,
     });
   };
 
-  loadMessages = e => {
-    this.props.loadMessages();
-  };
 
   render() {
+    console.log('====================================');
+    console.log('this.props', this.props);
+    console.log('====================================');
+    if (this.props.loading) {
+      return <h1>Loading...</h1>;
+    }
     return (
       <div className="wrapper">
         <div className="header">
@@ -72,13 +82,16 @@ class Container extends Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state, props) {
   return {
-    messages: state.message.data,
-    user: state.user
+    messages: state.message.channels[props.match.params.id],
+    loading: state.message.loading,
+    user: state.user,
   };
 }
 
-export default connect(mapStateToProps, { loadMessages, sendMessage })(
-  Container
-);
+export default connect(mapStateToProps, {
+  loadMessages,
+  sendMessage,
+  joinChannel,
+})(Container);

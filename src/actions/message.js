@@ -2,39 +2,46 @@ import { socket } from '../utls/socket';
 import { Message } from '../utls/api';
 import store from '../store';
 
-export function newMessage(payload){
+const { loading, success, error } = generateAction('LOAD_MESSAGE');
+
+export function newMessage(payload) {
   return {
     type: 'NEW_MESSAGE',
-    payload
-  }
+    payload,
+  };
 }
 
+console.log('====================================');
+console.log(socket);
+console.log('====================================');
 
-export function sendMessage(message){
-  return function(){
-    socket.emit('chat message', message);
-  }
+export function sendMessage(message, channelID) {
+  console.log(`Send message: ${message.message}, to channel: ${channelID}`);
+  return function() {
+    socket.emit('chat message', message, channelID);
+  };
 }
 
-socket.on('chat message', (message) => {
-  console.log('=============message')
-  console.log(message)
-  store.dispatch(newMessage(message))
-})
-
-export const LOAD_MESSAGES = 'MESSAGES';
+socket.on('chat message', message => {
+  console.log('=============message');
+  console.log(message);
+  store.dispatch(newMessage(message));
+});
 
 export function loadMessages(channelID) {
   return async dispatch => {
+    dispatch({ type: loading })
     try {
       const res = await Message.loadMessages(channelID);
       console.log('res', res);
       if (res.data)
         return dispatch({
-          type: LOAD_MESSAGES,
-          payload: res.data
+          type: success,
+          payload: res.data,
+          channelID
         });
     } catch (error) {
+      dispatch({ type: 'LOAD_MESSAGES_ERROR', error: error.message });
       throw error;
     }
   };

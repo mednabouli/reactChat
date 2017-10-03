@@ -6,7 +6,9 @@ import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 
 const middlewares = [
-  createLogger(),
+  createLogger({
+    collapsed: true,
+  }),
   thunk
 ];
 
@@ -16,6 +18,6 @@ export default createStore(
   compose(
     applyMiddleware(...middlewares),
     autoRehydrate(),
-    window.devToolsExtension ? window.devToolsExtension() : f => f 
+    window.devToolsExtension ? window.devToolsExtension() : f => f
   )
 )
