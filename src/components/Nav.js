@@ -18,7 +18,7 @@ class navbarInstance extends Component {
 
   render() {
     return (
-      <div>
+      <div className="one">
         <Navbar inverse collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>

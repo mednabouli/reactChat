@@ -12,17 +12,10 @@ class Container extends Component {
   state = {
     message: '',
     user: this.props.user.info.username,
-    channel: this.props.match.path
   };
 
   componentDidMount() {
-    this.props.loadMessages();
-    // console.log('==================================================');
-    // console.log(this.props.match.path);
-    // console.log('==================================================');
-    // console.log('==================================================');
-    // console.log(this.props);
-    // console.log('==================================================');
+    this.props.loadMessages(this.props.match.params.id);
   }
 
   onChange = e => {
@@ -32,7 +25,7 @@ class Container extends Component {
   onSubmit = e => {
     e.preventDefault();
     console.log('this works');
-    this.props.sendMessage(this.state);
+    this.props.sendMessage(this.state, this.props.match.params.id);
     this.setState({
       message: ''
     });
@@ -47,15 +40,17 @@ class Container extends Component {
 
   render() {
     return (
-      <div className="main">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React {this.props.user.info.username}</h2>
+      <div className="wrapper">
+        <div className="header">
+          <div className="center">
+            <img src={logo} className="App-logo" alt="logo" />
+            <h2>Welcome to React {this.props.user.info.username}</h2>
+          </div>
         </div>
-        <div className="sidebar col-1-4">
-        <Channel/>
+        <div className="channel">
+          <Channel />
         </div>
-        <div className="chat col-3-4">
+        <div className="chat">
           <Conversation messages={this.props.messages} />
           <div className="input-container">
             <form onSubmit={this.onSubmit}>
@@ -72,7 +67,6 @@ class Container extends Component {
             <p name="myScrollToElement" />
           </div>
         </div>
-        <div />
       </div>
     );
   }

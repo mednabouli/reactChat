@@ -1,3 +1,36 @@
+.wrapper {
+  display: grid;
+  /* grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr; */
+}
+
+.chat{
+  grid-column: 2/4;
+  grid-row: 2/6;
+  height: 400px;
+  overflow-y: auto;
+}
+
+.channel{
+  /* grid-column: 1/2;
+  grid-row: 3/4; */
+}
+
+.header {
+  grid-column: 1/4;
+  grid-row: 1;
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+
+.center{
+  text-align: center;
+}
+
+
 @import 'https://fonts.googleapis.com/css?family=Open+Sans:300, 400, 600, 700';
 
 .App {
@@ -31,28 +64,6 @@
   }
 }
 
-/* .app {
-  background: url(http://static1.squarespace.com/static/55acc005e4b098e615cd80e2/5777d3433e00be9cc0d8e3f6/5794e11ee4fcb508439092c7/1469374779773/IMG_3487.jpg?format=2500w);
-  background-size: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  display: flex;
-  font-family: 'Open Sans', sans-serif;
-  align-items: center;
-  justify-content: center;
-  height: 300px;
-  overflow: scroll !important;
-}
-
-/* .App {
-  height: 520px;
-  width: 320px;
-  background-color: rgba(233, 241, 247, 0.95);
-  display: block;
-  vertical-align: baseline;
-} */
 
 .message {
   padding: 10px;
@@ -71,10 +82,10 @@
   text-align: left;
 }
 
-.conversation {
+/* .conversation {
   overflow: auto;
   height: 300px;
-}
+} */
 
 .input-container {
   height: 60px;
@@ -128,9 +139,7 @@ button.chat{
   height: 360px;
 }
 
-.chat{
-  background-color: rgba(233, 241, 247, 0.95);
-}
+
 
 .main{
   margin: auto;

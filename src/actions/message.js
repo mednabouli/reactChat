@@ -24,10 +24,10 @@ socket.on('chat message', (message) => {
 
 export const LOAD_MESSAGES = 'MESSAGES';
 
-export function loadMessages() {
+export function loadMessages(channelID) {
   return async dispatch => {
     try {
-      const res = await Message.loadMessages();
+      const res = await Message.loadMessages(channelID);
       console.log('res', res);
       if (res.data)
         return dispatch({

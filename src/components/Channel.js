@@ -32,10 +32,10 @@ class Channel extends Component {
     return (
       
       <div>
-        <div className="item-sidebar">
-          {channels.map((channel) => (
+        <div className="testdiv">
+          {channels.map((channel, i) => (
             <ul className="channel-list">
-              <li className="item" key={channel._id}>
+              <li className="item" key={channel._id} onClick={()=> this._goTo(`/channel/${channel._id}`)}>
               <a className="channel-name">{channel.name}</a>
               </li>
             </ul>

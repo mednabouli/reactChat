@@ -16,8 +16,8 @@ class MessageApi {
     return axios.get(`channel`)
   }
 
-  loadMessages() {
-    return axios.get(`messages`);
+  loadMessages(channelID) {
+    return axios.get(`messages/${channelID}`);
   }
 
 }
